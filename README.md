@@ -23,6 +23,8 @@ versions are welcome._
 
     _Latest version of XCode may cause build problems with Qt 5.5 and capybara.  XCode version 9.4 is recommended.  For instructions on downgrading versions see [this article](https://medium.com/@tseboho/how-to-downgrade-xcode-4359df5158d5)._
 
+    _Note: You can run the script with just the [XCode Command Line Tools](https://developer.apple.com/download/more/?name=Command%20Line%20Tools), which appears to work with XCode version 10.1_
+
 Base Install
 -------
 
