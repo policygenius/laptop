@@ -72,6 +72,7 @@ Google Cloud Platform setup
 
 * Log into GCP with the `gcloud` command
   * `gcloud auth login`
+  * `gcloud auth application-default login`
 * Configure `gcloud` to use the sandbox project
   * `gcloud config set project pg-sandbox-165613`
 * Configure `kubectl` to use the sandbox Kubernetes cluster
