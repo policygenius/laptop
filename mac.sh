@@ -65,7 +65,7 @@ brew_install_or_upgrade() {
 brew_is_installed() {
   local name="$(brew_expand_alias "$1")"
 
-  brew list -1 | grep -Fqx "$name"
+  brew list --formula -1 | grep -Fqx "$name"
 }
 
 brew_is_upgradable() {
