@@ -57,7 +57,9 @@ PolicyGenius specific tips
 * PG repo
   * If after installing all dependancies you are getting `Invalid CSS` error in the browser, it might be Node version. Check that you are using `v0.12`.
 
-* Elasticsearch 5.6 issue
+* Elasticsearch
+  * Previously, we needed to install elasticsearch 5.6. With our elasticsearch cluster now upgraded, version 6.8.x should install via homebrew without issue.
+<!-- * Elasticsearch 5.6 issue
 
   Elasticsearch 5.6 is no longer served through homebrew - our install script should handle porting over a local version of Elasticsearch 5.6 and installing it from there. There is a hard dependency on Java 1.8, which this script should install as well. However, if you come across this error message when trying to install Elasticsearh 5.6
 
@@ -76,7 +78,7 @@ PolicyGenius specific tips
   OpenJDK 64-Bit Server VM (build 25.282-b00, mixed mode)
   ```
 
-  Comment/remove out the line in `elasticsearch@5.6.rb` that says `depends_on :java => "1.8"` and try reinstalling
+  Comment/remove out the line in `elasticsearch@5.6.rb` that says `depends_on :java => "1.8"` and try reinstalling -->
 
 Google Cloud Platform setup
 ---------------------------
