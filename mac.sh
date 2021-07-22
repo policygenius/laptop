@@ -203,9 +203,11 @@ brew_install_or_upgrade 'openssl'
 brew unlink openssl && brew link openssl --force
 
 brew_tap 'homebrew/cask'
+cask_install_or_upgrade 'chromedriver'
 install_elasticsearch
 
 # Install applications
+cask_install_or_upgrade 'google-chrome'
 install_ruby_2_4_5
 install_bundler_1_17_3
 
