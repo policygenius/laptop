@@ -127,9 +127,9 @@ install_or_update_homebrew() {
   brew update
 }
 
-install_ruby_2_4_5() {
+install_ruby_2_5_8() {
   append_to_zshrc 'eval "$(rbenv init - --no-rehash zsh)"' 1
-  ruby_version="2.4.5"
+  ruby_version="2.5.8"
   eval "$(rbenv init - zsh)"
 
   if ! rbenv versions | grep -Fq "$ruby_version"; then
@@ -197,7 +197,7 @@ cask_install_or_upgrade 'chromedriver'
 
 # Install applications
 cask_install_or_upgrade 'google-chrome'
-install_ruby_2_4_5
+install_ruby_2_5_8
 install_bundler_1_17_3
 
 # Setup Google Cloud Platform/Kubernetes Tooling
