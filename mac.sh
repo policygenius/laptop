@@ -197,7 +197,7 @@ cask_install_or_upgrade 'chromedriver'
 
 # Install applications
 cask_install_or_upgrade 'google-chrome'
-install_ruby_2_5_8_
+install_ruby_2_5_8
 install_bundler_1_17_3
 
 # Setup Google Cloud Platform/Kubernetes Tooling
