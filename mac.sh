@@ -127,14 +127,13 @@ install_or_update_homebrew() {
   brew update
 }
 
-install_ruby_2_5_8() {
+install_ruby() {
   append_to_zshrc 'eval "$(rbenv init - --no-rehash zsh)"' 1
   ruby_version="2.5.8"
   eval "$(rbenv init - zsh)"
 
   if ! rbenv versions | grep -Fq "$ruby_version"; then
-    # See: https://github.com/rbenv/ruby-build/issues/1353#issuecomment-573414540
-    RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)" rbenv install -s "$ruby_version"
+    rbenv install -s "$ruby_version"
   fi
 
   rbenv global "$ruby_version"
@@ -177,7 +176,7 @@ append_to_zshrc 'export PATH="$HOME/.bin:$PATH"'
 # Install packages
 install_or_update_homebrew
 brew_install_or_upgrade 'git'
-install_postgresql
+# install_postgresql - PostgreSQL 9.6 hit EoL and is no longer supported by brew
 brew_install_or_upgrade 'redis'
 brew_launchctl_restart 'redis'
 brew_install_or_upgrade 'sops'
@@ -197,7 +196,7 @@ cask_install_or_upgrade 'chromedriver'
 
 # Install applications
 cask_install_or_upgrade 'google-chrome'
-install_ruby_2_5_8
+install_ruby
 install_bundler_1_17_3
 
 # Setup Google Cloud Platform/Kubernetes Tooling
