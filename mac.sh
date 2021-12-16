@@ -173,7 +173,7 @@ install_bundler_1_17_3() {
     sudo mkdir -p /etc/paths.d && echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
     fancy_echo 'Installed psql via PostgresApp BUT needs to be started manually'
   else
-    fancy_echo 'Psql found - skipping install'
+    fancy_echo 'Already installed Psql. Skipping'
   fi
 }
 
