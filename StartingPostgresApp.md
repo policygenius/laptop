@@ -1,6 +1,6 @@
-# Starting Postgresql
+# Starting Postgresql w/PostgresApp
 
-Since postgresql@9.6 is EoL and deprecated by Homebrew, an alternative is to use the PostgresApp. The app comes bundled with a handful of versions of postrgresql. 
+Since postgresql@9.6 is EoL and deprecated by Homebrew, an alternative is to use the [PostgresApp](https://postgresapp.com ). The app comes bundled with a handful of versions of postgresql. 
 
 ## Initializing a 9.6 DB
 
@@ -8,7 +8,7 @@ After installing the app via the [mac.sh](./mach.sh) script, you will need to in
 
 1. Open the PostgresApp however you like. It should be in your `/Applications` directory
 
-![](./images/postgresql-9.6-create-screen.png)
+![](./images/postgresql-startup-screen.png)
 
 2. Select the `+` button on the bottom left of the Left Sidebar
 

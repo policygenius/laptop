@@ -152,7 +152,7 @@ install_bundler_1_17_3() {
 }
 
  # PostgreSQL 9.6 hit EoL and is no longer supported by brew. This step now downloads the PG App - https://postgresapp.com/ - to install 9.6
- # You will need to manually start the Database however. See the StartingPostgresql.md guide in this repo.
+ # You will need to manually start the Database however. See the StartingPostgresApp.md guide in this repo.
  install_postgresql() {
   # brew_install_or_upgrade 'postgresql@9.6'
   # brew link postgresql@9.6 --force
