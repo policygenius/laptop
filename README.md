@@ -19,7 +19,7 @@ Mac Requirements
 Base Install
 -------
 
-Clone the `laptop` repo, and then execute the script:
+_Note: there may be times you need to enter your password_
 
 ```sh
 git clone git@github.com:policygenius/laptop.git

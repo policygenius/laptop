@@ -127,14 +127,13 @@ install_or_update_homebrew() {
   brew update
 }
 
-install_ruby_2_5_8() {
+install_ruby() {
   append_to_zshrc 'eval "$(rbenv init - --no-rehash zsh)"' 1
   ruby_version="2.5.8"
   eval "$(rbenv init - zsh)"
 
   if ! rbenv versions | grep -Fq "$ruby_version"; then
-    # See: https://github.com/rbenv/ruby-build/issues/1353#issuecomment-573414540
-    RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl)" rbenv install -s "$ruby_version"
+    rbenv install -s "$ruby_version"
   fi
 
   rbenv global "$ruby_version"
@@ -152,15 +151,31 @@ install_bundler_1_17_3() {
   bundle config --global jobs $((number_of_cores - 1))
 }
 
-install_postgresql() {
-  brew_install_or_upgrade 'postgresql@9.6'
-  brew link postgresql@9.6 --force
-  brew_launchctl_restart 'postgresql'
-  if [ `psql -U postgres -c "select 1" &> /dev/null` ]; then
-    /usr/local/bin/createuser -U `whoami` --superuser postgres
+ # PostgreSQL 9.6 hit EoL and is no longer supported by brew. This step now downloads the PG App - https://postgresapp.com/ - to install 9.6
+ # You will need to manually start the Database however. See the StartingPostgresApp.md guide in this repo.
+ install_postgresql() {
+  # brew_install_or_upgrade 'postgresql@9.6'
+  # brew link postgresql@9.6 --force
+  # brew_launchctl_restart 'postgresql'
+  # if [ `psql -U postgres -c "select 1" &> /dev/null` ]; then
+  #   /usr/local/bin/createuser -U `whoami` --superuser postgres
+  # fi
+
+  if [ -z `psql --version`]; then
+    fancy_echo 'Installing psql via PostgresApp...'
+    # Download the postgresapp DMG via curl
+    # --location to follow redirects
+    # --output to write the output to a file
+    curl https://github.com/PostgresApp/PostgresApp/releases/download/v2.5.2/Postgres-2.5.2-9.6-10-11-12-13-14.dmg --location --output ~/Downloads/postgres-2.5.2.dmg
+    MOUNT_POINT=$(hdiutil attach ~/Downloads/postgres-2.5.2.dmg -nobrowse | grep "Postgres-2.5.2" | awk '{print $3}')
+    sudo cp -R $MOUNT_POINT/Postgres.app /Applications
+    hdiutil unmount $MOUNT_POINT
+    sudo mkdir -p /etc/paths.d && echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
+    fancy_echo 'Installed psql via PostgresApp BUT needs to be started manually'
+  else
+    fancy_echo 'Already installed Psql. Skipping'
   fi
 }
-
 
 ##### Start Installation #####
 
@@ -197,7 +212,7 @@ cask_install_or_upgrade 'chromedriver'
 
 # Install applications
 cask_install_or_upgrade 'google-chrome'
-install_ruby_2_5_8
+install_ruby
 install_bundler_1_17_3
 
 # Setup Google Cloud Platform/Kubernetes Tooling
