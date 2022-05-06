@@ -156,7 +156,6 @@ install_redpanda() {
   curl -1sLf 'https://packages.vectorized.io/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.deb.sh' | sudo -E bash
   ## Use apt to install redpanda
   apt_install 'redpanda'
-  ## Start redpanda as a service 
 }
 
 ############################################
