@@ -203,6 +203,7 @@ brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'
 brew_install_or_upgrade 'openssl'
 brew_install_or_upgrade 'elasticsearch@6'
+brew_install_or_upgrade 'redpanda-data/tap/redpanda'
 brew services start elasticsearch@6
 
 brew unlink openssl && brew link openssl --force

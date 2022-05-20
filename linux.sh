@@ -151,6 +151,13 @@ install_docker_gcr(){
 }
 
 
+install_redpanda() {
+  ## Run the setup script to download and install the repo
+  curl -1sLf 'https://packages.vectorized.io/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.deb.sh' | sudo -E bash
+  ## Use apt to install redpanda
+  apt_install 'redpanda'
+}
+
 ############################################
 #                                          #
 #  !!! Actually do the installs below !!!  #
@@ -171,6 +178,7 @@ install_rbenv
 install_ruby
 install_n
 install_yarn
+install_redpanda
 
 #policygenius project dependencies
 apt_install 'redis-server'
