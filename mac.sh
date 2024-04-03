@@ -74,11 +74,6 @@ brew_is_upgradable() {
   ! brew outdated --quiet "$name" >/dev/null
 }
 
-brew_tap() {
-  fancy_echo "Tapping %s..." "$1"
-  brew tap "$1" 2> /dev/null
-}
-
 brew_expand_alias() {
   brew info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
 }
@@ -208,7 +203,6 @@ brew services start elasticsearch@6
 
 brew unlink openssl && brew link openssl --force
 
-brew_tap 'homebrew/cask'
 cask_install_or_upgrade 'chromedriver'
 
 # Install applications
