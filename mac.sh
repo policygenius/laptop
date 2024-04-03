@@ -129,7 +129,7 @@ install_or_update_homebrew() {
 
 install_ruby() {
   append_to_zshrc 'eval "$(rbenv init - --no-rehash zsh)"' 1
-  ruby_version="2.6.9"
+  ruby_version="2.7.6"
   eval "$(rbenv init - zsh)"
 
   if ! rbenv versions | grep -Fq "$ruby_version"; then
@@ -139,7 +139,7 @@ install_ruby() {
   rbenv global "$ruby_version"
   rbenv shell "$ruby_version"
 
-  gem update --system
+  gem update --system 3.4.22
 }
 
 install_bundler_1_17_3() {
